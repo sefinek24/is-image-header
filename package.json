@@ -1,0 +1,29 @@
+{
+  "name": "is-image-header",
+  "version": "1.0.0",
+  "description": "This module checks if the URL leads to a photo by analyzing the header.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "up": "ncu -u && npm install && npm update && npm audit fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sefinek24/is-image-header.git"
+  },
+  "keywords": [
+    "is",
+    "image",
+    "header"
+  ],
+  "author": "Sefinek (https://skiffybot.xyz)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sefinek24/is-image-header/issues"
+  },
+  "homepage": "https://github.com/sefinek24/is-image-header#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "is-url": "^1.2.4"
+  }
+}
