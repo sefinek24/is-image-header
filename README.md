@@ -20,7 +20,7 @@ const isImage = require('is-image-header');
 
 ### • Promise example
 ```js
-const isImage = require('random-cat-img');
+const isImage = require('is-image-header');
 
 isImage('https://cdn.skiffybot.xyz/images/animals/cat/cat-story-25-1377426-min.jpg').then(data => console.log(data)); // true
 isImage('https://api.skiffybot.xyz').then(data => console.log(data)); // false
