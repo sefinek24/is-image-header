@@ -34,8 +34,8 @@
     "axios": "^0.27.2",
     "is-url": "^1.2.4"
   },
-  "types": "./index.d.ts",
   "devDependencies": {
     "jest": "^28.1.0"
-  }
+  },
+  "types": "./index.d.ts"
 }
