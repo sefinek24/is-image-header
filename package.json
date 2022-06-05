@@ -1,10 +1,10 @@
 {
   "name": "is-image-header",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This module checks if the URL leads to a photo by analyzing the header.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "up": "ncu -u && npm install && npm update && npm audit fix"
   },
   "repository": {
@@ -33,5 +33,9 @@
   "dependencies": {
     "axios": "^0.27.2",
     "is-url": "^1.2.4"
+  },
+  "types": "./index.d.ts",
+  "devDependencies": {
+    "jest": "^28.1.0"
   }
 }

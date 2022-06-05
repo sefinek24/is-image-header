@@ -2,7 +2,7 @@
 This module checks if the URL leads to a photo by analyzing the header.
 
 ## ⚠️ » Warning
-Remember that your IP address will be exposed! The module uses [axios](https://www.npmjs.com/package/axios).
+Your IP address will be exposed! The module uses [axios](https://www.npmjs.com/package/axios).
 
 ## 🤔 » Installation
 > **$** npm install is-image-header
@@ -14,7 +14,7 @@ const isImage = require('is-image-header');
 
 (async () => {
     console.log(await isImage('https://cdn.skiffybot.xyz/images/animals/cat/cat-story-25-1377426-min.jpg')); // true
-    console.log(await isImage('https://api.skiffybot.xyz')); // false
+    console.log(await isImage('https://sefinek.fun')); // false
 })();
 ```
 
@@ -23,7 +23,7 @@ const isImage = require('is-image-header');
 const isImage = require('is-image-header');
 
 isImage('https://cdn.skiffybot.xyz/images/animals/cat/cat-story-25-1377426-min.jpg').then(data => console.log(data)); // true
-isImage('https://api.skiffybot.xyz').then(data => console.log(data)); // false
+isImage('https://sefinek.fun').then(data => console.log(data)); // false
 ```
 
 ## 🤝 » Help

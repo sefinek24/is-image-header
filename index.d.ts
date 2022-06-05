@@ -1,0 +1,1 @@
+export default function isImage(url: String): Boolean
