@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/sefinek24/is-image-header#readme",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.1.2",
     "is-url": "^1.2.4"
   },
   "devDependencies": {
