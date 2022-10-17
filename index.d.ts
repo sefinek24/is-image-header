@@ -1,1 +1,1 @@
-export default function isImage(url: String): Boolean
+export function isImage(url: String): Boolean;
