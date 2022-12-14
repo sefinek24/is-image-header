@@ -1,6 +1,6 @@
 {
   "name": "is-image-header",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This module checks if the URL leads to a photo by analyzing the header.",
   "main": "index.js",
   "scripts": {
@@ -31,8 +31,7 @@
   },
   "homepage": "https://github.com/sefinek24/is-image-header#readme",
   "dependencies": {
-    "axios": "^1.2.1",
-    "is-url": "^1.2.4"
+    "axios": "^1.2.1"
   },
   "devDependencies": {
     "jest": "^29.3.1"

@@ -1,1 +1,2 @@
-export function isImage(url: String): Boolean;
+declare function isImage(url: Object): Promise<Boolean>;
+export default isImage;

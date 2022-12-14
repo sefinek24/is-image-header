@@ -1,5 +1,5 @@
 const { get } = require('axios');
-const isUrl = require('is-url');
+const isUrl = require('./is-url.js');
 const { version } = require('./package.json');
 
 module.exports = async url => {
