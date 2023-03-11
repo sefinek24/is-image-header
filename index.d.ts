@@ -1,2 +1,3 @@
-declare function isImage(url: String): Promise<Boolean>;
-export default isImage;
+declare module 'isImage' {
+    export function isImage(url: string): boolean;
+}
