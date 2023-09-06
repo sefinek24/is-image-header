@@ -1,4 +1,4 @@
-## 🌍 » What is that?
+# 🌍 » What is that?
 This module checks if the URL leads to a photo by analyzing the header.
 
 ## 🤔 » Installation
