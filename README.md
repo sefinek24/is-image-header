@@ -1,11 +1,10 @@
 ## 🌍 » What is that?
 This module checks if the URL leads to a photo by analyzing the header.
 
-## ⚠️ » Warning
-Your IP address may be exposed! The module uses [axios](https://www.npmjs.com/package/axios).
-
 ## 🤔 » Installation
-> **$** npm install is-image-header
+```bash
+npm install is-image-header
+````
 
 ## 📝 » Usage
 ### • Async/await example
@@ -13,8 +12,8 @@ Your IP address may be exposed! The module uses [axios](https://www.npmjs.com/pa
 const isImage = require('is-image-header');
 
 (async () => {
-    console.log(await isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg')); // true
-    console.log(await isImage('https://sefinek.net')); // false
+    console.log(await isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg')); // { success: true, code: 0, isImage: true }
+    console.log(await isImage('https://sefinek.net')); // { success: true, code: 0, isImage: false }
 })();
 ```
 
@@ -22,8 +21,8 @@ const isImage = require('is-image-header');
 ```js
 const isImage = require('is-image-header');
 
-isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg').then(data => console.log(data)); // true
-isImage('https://sefinek.net').then(data => console.log(data)); // false
+isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg').then(data => console.log(data)); // { success: true, code: 0, isImage: true }
+isImage('https://sefinek.net').then(data => console.log(data)); // { success: true, code: 0, isImage: false }
 ```
 
 ## 🤝 » Help

@@ -1,5 +1,4 @@
-// Regular expression pattern for matching URLs
-const urlPattern = /(https?|http):\/\/[^\s/$.?#].[^\\s]*/i
+const urlPattern = /(https?|http):\/\/[^\s/$.?#].[^\\s]*/i; // Regular expression pattern for matching URLs
 
 module.exports = str => {
 	// Check if the string is not empty and matches the URL pattern
@@ -12,12 +11,12 @@ module.exports = str => {
 			if (url.protocol === 'http:' || url.protocol === 'https:' || url.protocol === 'ftp:') {
 				return true;
 			}
-		} catch (error) {
+		} catch (err) {
 			// Catch any errors that may occur during URL parsing
-			console.error('Error parsing URL:', error);
+			console.error('Error parsing URL:', err);
 		}
 	}
 
 	// If any of the checks fail, return false
 	return false;
-}
+};
