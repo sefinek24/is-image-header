@@ -1,16 +1,54 @@
-const { get } = require('axios');
+const http = require('http');
+const https = require('https');
 const isUrl = require('./is-url.js');
-const { version } = require('./package.json');
+const { name, version } = require('./package.json');
 
-module.exports = async url => {
-	if (!url || !isUrl(url)) return false;
+const userAgent = `${name}/${version} (+https://github.com/sefinek24/is-image-header)`;
 
-	try {
-		const res = await get(url, { headers: { 'User-Agent': `is-image-header/${version} (https://github.com/sefinek24/is-image-header)` } });
-		if (!(res.status >= 200 && res.status < 300)) return false;
+function isImageURL(url) {
+	return new Promise((resolve, reject) => {
+		if (!isUrl(url)) {
+			console.error('Invalid URL:', url)
+			resolve(false);
+		}
 
-		return (/image\//gi).test(res.headers['content-type']);
-	} catch (err) {
-		return false;
-	}
-};
+		const protocol = url.startsWith('https') ? https : http;
+
+		const options = {
+			method: 'GET',
+			headers: {
+				'User-Agent': userAgent,
+				'Accept': 'image/*', // Added the Accept header to specify that we expect images
+			},
+		};
+
+		const request = protocol.request(url, options, (res) => {
+			if (res.statusCode !== 200) {
+				resolve(false); // Failed to fetch the resource
+				return;
+			}
+
+			const contentType = res.headers['content-type'];
+			if (contentType && contentType.startsWith('image/')) {
+				resolve(true); // The resource is an image
+			} else {
+				resolve(false); // The resource is not an image
+			}
+		});
+
+		request.on('error', (err) => {
+			console.error('Error while fetching the resource:', err.message);
+			reject(err); // Error while fetching the resource
+		});
+
+		// Set a timeout for the request (e.g., 10 seconds)
+		request.setTimeout(10000, () => {
+			request.destroy();
+			resolve(false); // Request timed out
+		});
+
+		request.end();
+	});
+}
+
+module.exports = isImageURL;
