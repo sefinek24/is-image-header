@@ -8,7 +8,7 @@ module.exports = str => {
 			const url = new URL(str);
 
 			// Check if the URL protocol is 'http:', 'https:', or 'ftp:'
-			if (url.protocol === 'http:' || url.protocol === 'https:' || url.protocol === 'ftp:') {
+			if (url.protocol === 'http:' || url.protocol === 'https:') {
 				return true;
 			}
 		} catch (err) {

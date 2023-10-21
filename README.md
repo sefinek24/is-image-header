@@ -12,8 +12,11 @@ npm install is-image-header
 const isImage = require('is-image-header');
 
 (async () => {
-    console.log(await isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg')); // { success: true, code: 0, isImage: true }
-    console.log(await isImage('https://sefinek.net')); // { success: true, code: 0, isImage: false }
+    const example1 = await isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg');
+    console.log(example1); // { success: true, status: 200, error: false, isImage: true }
+
+    const example2 = await isImage('https://sefinek.net');
+    console.log(example2); // { success: true, status: 200, error: false, isImage: false }
 })();
 ```
 
@@ -21,9 +24,17 @@ const isImage = require('is-image-header');
 ```js
 const isImage = require('is-image-header');
 
-isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg').then(data => console.log(data)); // { success: true, code: 0, isImage: true }
-isImage('https://sefinek.net').then(data => console.log(data)); // { success: true, code: 0, isImage: false }
+isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg').then(console.log); // { success: true, status: 200, error: false, isImage: true }
+isImage('https://sefinek.net').then(console.log); // { success: true, status: 200, error: false, isImage: false }
 ```
 
 ## 🤝 » Help
 Open new [Issue](https://github.com/sefinek24/is-image-header/issues/new/choose) on GitHub.
+
+## ⭐ » Star
+If you like this module, please star [the repository](https://github.com/sefinek24/random-cat-img).
+
+## 📜 » License MIT
+<div align="center">
+    Copyright 2023 © by <a href="https://sefinek.net">Sefinek</a>. All Rights Reserved.
+</div>

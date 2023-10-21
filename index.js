@@ -1,71 +1,78 @@
-const http = require('http');
-const https = require('https');
+const axios = require('axios');
 const isUrl = require('./is-url.js');
-const { name, version } = require('./package.json');
+const { name, version, devDependencies } = require('./package.json');
 
-const options = {
-	method: 'GET',
-	headers: {
-		'User-Agent': `${name}/${version} (+https://github.com/sefinek24/is-image-header)`,
-		'Accept': 'image/*',
-	},
+const defaultHeaders = {
+	'User-Agent': `${name}/${version} (+https://github.com/sefinek24/is-image-header)${process.env.JEST_WORKER_ID === undefined ? '' : ` jest/${devDependencies.jest.replace('^', '')}`}`,
+	'Accept': 'application/json',
+	'Content-Type': 'application/json',
+	'Cache-Control': 'no-cache',
+	'CF-IPCountry': 'false',
+	'CF-Visitor': '{"scheme":"https"}',
+	'Connection': 'keep-alive',
+	'DNT': '1',
+	'Pragma': 'no-cache',
+	'Referrer-Policy': 'strict-origin-when-cross-origin',
+	'X-Content-Type-Options': 'nosniff',
+	'X-Frame-Options': 'DENY',
+	'X-XSS-Protection': '1; mode=block',
 };
 
-function isImageURL(url) {
+async function isImage(url) {
 	if (!isUrl(url)) {
 		return {
 			success: false,
-			code: 1, // Custom error code for an invalid URL
-			isImage: null,
+			status: 1,
 			message: 'Invalid URL',
+			error: false,
+			isImage: false,
 		};
 	}
 
-	return new Promise(resolve => {
-		const protocol = url.startsWith('https') ? https : http;
-
-		const request = protocol.request(url, options, res => {
-			if (res.statusCode !== 200) {
-				resolve({
-					success: false,
-					code: 2, // Custom error code for failed resource fetch
-					isImage: null,
-					message: 'Failed to fetch the resource',
-				});
-				return;
-			}
-
-			const contentType = res.headers['content-type'];
-			if (contentType && contentType.startsWith('image/')) {
-				resolve({ success: true, code: 0, isImage: true });
-			} else {
-				resolve({ success: true, code: 0, isImage: false });
-			}
+	try {
+		const response = await axios.get(url, {
+			headers: { ...defaultHeaders },
+			timeout: 10000, // Request timeout
+			validateStatus: (status) => {
+				return status >= 200 && status < 600; // Accept all status codes
+			},
 		});
 
-		request.on('error', (err) => {
-			console.error('Error while fetching the resource:', err.message);
-			resolve({
+		if (response.status === 404) {
+			return {
 				success: false,
-				code: 3, // Custom error code for request error
-				isImage: null,
-				message: `Error while fetching the resource: ${err.message}`,
-			});
-		});
+				status: response.status,
+				error: false,
+				message: response.statusText,
+				isImage: false,
+			};
+		}
 
-		// Set a timeout for the request
-		request.setTimeout(8000, () => {
-			request.destroy();
-			resolve({
+		if (response.status !== 200) {
+			return {
 				success: false,
-				code: 4, // Custom error code for request timeout
-				isImage: null,
-				message: 'Request timed out',
-			});
-		});
+				status: response.status,
+				error: true,
+				message: response.statusText,
+				isImage: undefined,
+			};
+		}
 
-		request.end();
-	});
+		const contentType = response.headers['content-type'];
+		if (contentType && contentType.startsWith('image/')) {
+			return { success: true, status: response.status, error: false, isImage: true };
+		} else {
+			return { success: true, status: response.status, error: false, isImage: false };
+		}
+	} catch (err) {
+		return {
+			success: false,
+			status: 3,
+			error: true,
+			isImage: undefined,
+			message: `Error while fetching the resource: ${err.message}`,
+		};
+	}
 }
 
-module.exports = isImageURL;
+module.exports = isImage;
