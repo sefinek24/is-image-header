@@ -1,10 +1,10 @@
-interface IsImageURLResponse {
-    success: boolean;
-    code: number;
-    isImage: boolean | null;
-    message?: string;
+declare module 'is-image-header' {
+    interface IsImageResult {
+        success: boolean;
+        code: number;
+        isImage: boolean;
+    }
+
+    function isImage(url: string): Promise<IsImageResult>;
+    export = isImage;
 }
-
-declare function isImageURL(url: string): Promise<IsImageURLResponse>;
-
-export = isImageURL;
