@@ -1,6 +1,6 @@
 {
   "name": "is-image-header",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "This module checks if the URL leads to a photo by analyzing the header.",
   "keywords": [
     "check",
@@ -32,6 +32,16 @@
   "directories": {
     "test": "test"
   },
+  "files": [
+    "test/",
+    ".gitignore",
+    "example.js",
+    "index.d.ts",
+    "index.js",
+    "is-url.js",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "test": "jest"
   },
