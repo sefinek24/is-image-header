@@ -20,42 +20,24 @@ const defaultHeaders = {
 
 async function isImage(url) {
 	if (!isUrl(url)) {
-		return {
-			success: false,
-			status: 1,
-			message: 'Invalid URL',
-			error: false,
-			isImage: false,
-		};
+		return { success: false, status: 1, message: 'Invalid URL', error: false, isImage: false };
 	}
 
 	try {
 		const response = await axios.get(url, {
 			headers: { ...defaultHeaders },
 			timeout: 10000, // Request timeout
-			validateStatus: (status) => {
+			validateStatus: status => {
 				return status >= 200 && status < 600; // Accept all status codes
 			},
 		});
 
 		if (response.status === 404) {
-			return {
-				success: false,
-				status: response.status,
-				error: false,
-				message: response.statusText,
-				isImage: false,
-			};
+			return { success: false, status: response.status, error: false, message: response.statusText, isImage: false };
 		}
 
 		if (response.status !== 200) {
-			return {
-				success: false,
-				status: response.status,
-				error: true,
-				message: response.statusText,
-				isImage: undefined,
-			};
+			return { success: false, status: response.status, error: true, message: response.statusText, isImage: undefined };
 		}
 
 		const contentType = response.headers['content-type'];
