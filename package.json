@@ -34,7 +34,6 @@
   },
   "files": [
     "test/",
-    ".gitignore",
     "example.js",
     "index.d.ts",
     "index.js",
