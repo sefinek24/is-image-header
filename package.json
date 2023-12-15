@@ -47,7 +47,7 @@
     "up": "ncu -u && npm install && npm update && npm audit fix"
   },
   "dependencies": {
-    "axios": "^1.5.1"
+    "axios": "^1.6.2"
   },
   "devDependencies": {
     "jest": "^29.7.0"
