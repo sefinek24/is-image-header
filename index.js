@@ -5,9 +5,7 @@ const { name, version, devDependencies } = require('./package.json');
 const defaultHeaders = {
 	'User-Agent': `${name}/${version} (+https://github.com/sefinek24/is-image-header)${process.env.JEST_WORKER_ID === undefined ? '' : ` jest/${devDependencies.jest.replace('^', '')}`}`,
 	'Accept': 'application/json',
-	'Content-Type': 'application/json',
 	'Cache-Control': 'no-cache',
-	'CF-IPCountry': 'false',
 	'CF-Visitor': '{"scheme":"https"}',
 	'Connection': 'keep-alive',
 	'DNT': '1',
