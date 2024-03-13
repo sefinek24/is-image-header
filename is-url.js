@@ -7,7 +7,7 @@ module.exports = str => {
 			// Create a URL object to further validate the URL components
 			const url = new URL(str);
 
-			// Check if the URL protocol is 'http:', 'https:', or 'ftp:'
+			// Check if the URL protocol is 'http:' or 'https:'
 			if (url.protocol === 'http:' || url.protocol === 'https:') {
 				return true;
 			}
