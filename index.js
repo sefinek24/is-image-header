@@ -22,7 +22,7 @@ async function isImage(url) {
 	}
 
 	try {
-		const response = await axios.get(url, {
+		const response = await axios.head(url, {
 			headers: { ...defaultHeaders },
 			timeout: 10000, // Request timeout
 			validateStatus: status => {
