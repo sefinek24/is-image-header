@@ -17,27 +17,27 @@ async function isImage(url) {
 	}
 
 	try {
-		const response = await axios.head(url, {
+		const res = await axios.head(url, {
 			headers: { ...defaultHeaders },
 			timeout: 10000, // Request timeout
 			validateStatus: status => {
-				return status >= 200 && status < 600; // Accept all status codes
+				return status >= 200 && status < 511; // Accept all status codes
 			}
 		});
 
-		if (response.status === 404) {
-			return { success: false, status: response.status, error: false, message: response.statusText, isImage: false };
+		if (res.status === 404) {
+			return { success: false, status: res.status, error: false, message: res.statusText, isImage: false };
 		}
 
-		if (response.status !== 200) {
-			return { success: false, status: response.status, error: true, message: response.statusText, isImage: undefined };
+		if (res.status !== 200) {
+			return { success: false, status: res.status, error: true, message: res.statusText, isImage: undefined };
 		}
 
-		const contentType = response.headers['content-type'];
+		const contentType = res.headers['content-type'];
 		if (contentType && contentType.startsWith('image/')) {
-			return { success: true, status: response.status, error: false, isImage: true };
+			return { success: true, status: res.status, error: false, isImage: true };
 		} else {
-			return { success: true, status: response.status, error: false, isImage: false };
+			return { success: true, status: res.status, error: false, isImage: false };
 		}
 	} catch (err) {
 		return {
