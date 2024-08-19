@@ -35,9 +35,11 @@
     "up": "ncu -u && npm install && npm update && npm audit fix"
   },
   "dependencies": {
-    "axios": "^1.6.7"
+    "axios": "^1.7.4"
   },
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "@eslint/js": "^9.9.0",
+    "globals": "^15.9.0"
   }
 }
