@@ -3,26 +3,19 @@ const isUrl = require('./is-url.js');
 const { name, version, devDependencies } = require('./package.json');
 
 const defaultHeaders = {
-	'User-Agent': `${name}/${version} (+https://github.com/sefinek24/is-image-header)${process.env.JEST_WORKER_ID === undefined ? '' : ` jest/${devDependencies.jest.replace('^', '')}`}`,
-	'Accept': 'application/json',
-	'Content-Type': 'application/json',
-	'Cache-Control': 'no-cache',
+	'User-Agent': `${name}/${version} (+https://github.com/sefinek24/is-image-header)${process.env.JEST_WORKER_ID ? ` jest/${devDependencies.jest.replace(/^[^0-9]*/, '')}` : ''}`,
 	'Connection': 'keep-alive',
 	'DNT': '1'
 };
 
-async function isImage(url) {
-	if (!isUrl(url)) {
-		return { success: false, status: 1, message: 'Invalid URL', error: false, isImage: false };
-	}
+module.exports = async url => {
+	if (!isUrl(url)) return { success: false, status: 1, message: 'Invalid URL', error: false, isImage: false };
 
 	try {
 		const res = await axios.head(url, {
 			headers: { ...defaultHeaders },
 			timeout: 10000, // Request timeout
-			validateStatus: status => {
-				return status >= 200 && status < 511; // Accept all status codes
-			}
+			validateStatus: status => status >= 200 && status < 511 // Accept all status codes
 		});
 
 		if (res.status === 404) {
@@ -48,6 +41,4 @@ async function isImage(url) {
 			message: `Error while fetching the resource: ${err.message}`
 		};
 	}
-}
-
-module.exports = isImage;
+};
