@@ -12,7 +12,7 @@ describe('isImage', () => {
 	});
 
 	it('should return the correct object for a valid non-image URL', async () => {
-		const result = await isImage('https://example.com');
+		const result = await isImage('https://sefinek.net');
 		expect(result).toEqual({
 			success: true,
 			status: 200,
@@ -33,7 +33,7 @@ describe('isImage', () => {
 	});
 
 	it('should return the correct object for a failed resource fetch', async () => {
-		const result = await isImage('https://example.com/non-existing-image.jpg');
+		const result = await isImage('https://sefinek.net/non-existing-image.jpg');
 		expect(result).toEqual({
 			success: false,
 			status: 404,
