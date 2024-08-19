@@ -22,7 +22,7 @@ async function isImage(url) {
 			timeout: 10000, // Request timeout
 			validateStatus: status => {
 				return status >= 200 && status < 600; // Accept all status codes
-			},
+			}
 		});
 
 		if (response.status === 404) {
@@ -45,7 +45,7 @@ async function isImage(url) {
 			status: 3,
 			error: true,
 			isImage: undefined,
-			message: `Error while fetching the resource: ${err.message}`,
+			message: `Error while fetching the resource: ${err.message}`
 		};
 	}
 }
