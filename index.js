@@ -27,7 +27,7 @@ module.exports = async url => {
 		}
 
 		const contentType = res.headers['content-type'];
-		if (contentType && contentType.startsWith('image/')) {
+		if (contentType?.startsWith('image/')) {
 			return { success: true, status: res.status, error: false, isImage: true };
 		} else {
 			return { success: true, status: res.status, error: false, isImage: false };
