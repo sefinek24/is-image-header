@@ -49,7 +49,7 @@ describe('isImage', () => {
 			success: false,
 			status: 3,
 			error: true,
-			isImage: undefined,
+			isImage: null,
 			message: expect.stringContaining('Error while fetching the resource')
 		});
 	});
