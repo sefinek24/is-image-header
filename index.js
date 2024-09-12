@@ -23,7 +23,7 @@ module.exports = async url => {
 		}
 
 		if (res.status !== 200) {
-			return { success: false, status: res.status, error: true, message: res.statusText, isImage: undefined };
+			return { success: false, status: res.status, error: true, message: res.statusText, isImage: null };
 		}
 
 		const contentType = res.headers['content-type'];
@@ -37,7 +37,7 @@ module.exports = async url => {
 			success: false,
 			status: 3,
 			error: true,
-			isImage: undefined,
+			isImage: null,
 			message: `Error while fetching the resource: ${err.message}`
 		};
 	}
