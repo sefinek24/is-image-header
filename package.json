@@ -1,7 +1,7 @@
 {
   "name": "is-image-header",
   "version": "3.0.8",
-  "description": "This module checks if the URL leads to a photo by analyzing the header.",
+  "description": "This simple module checks if the given link leads to an image.",
   "keywords": [
     "check",
     "gif",
