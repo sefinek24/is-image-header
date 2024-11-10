@@ -2,10 +2,13 @@ const axios = require('axios');
 const isUrl = require('./is-url.js');
 const { name, version, devDependencies } = require('./package.json');
 
-const defaultHeaders = {
+const headers = {
 	'User-Agent': `${name}/${version} (+https://github.com/sefinek/is-image-header)${process.env.JEST_WORKER_ID ? ` jest/${devDependencies.jest.replace(/^[^0-9]*/, '')}` : ''}`,
+	'Accept': 'application/json',
+	'Content-Type': 'application/json',
+	'Cache-Control': 'no-cache',
 	'Connection': 'keep-alive',
-	'DNT': '1'
+	'DNT': '1',
 };
 
 module.exports = async url => {
@@ -13,7 +16,7 @@ module.exports = async url => {
 
 	try {
 		const res = await axios.head(url, {
-			headers: { ...defaultHeaders },
+			headers,
 			timeout: 10000, // Request timeout
 			validateStatus: status => status >= 200 && status < 511 // Accept all status codes
 		});
