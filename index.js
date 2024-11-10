@@ -17,8 +17,8 @@ module.exports = async url => {
 	try {
 		const res = await axios.head(url, {
 			headers,
-			timeout: 10000, // Request timeout
-			validateStatus: status => status >= 200 && status < 511 // Accept all status codes
+			timeout: 8000, // Request timeout
+			validateStatus: status => status >= 200 && status < 511, // Accept all status codes
 		});
 
 		if (res.status === 404) {
@@ -41,7 +41,7 @@ module.exports = async url => {
 			status: 3,
 			error: true,
 			isImage: null,
-			message: `Error while fetching the resource: ${err.message}`
+			message: `Error while fetching the resource: ${err.message}`,
 		};
 	}
 };

@@ -7,7 +7,7 @@ describe('isImage', () => {
 			success: true,
 			status: 200,
 			error: false,
-			isImage: true
+			isImage: true,
 		});
 	});
 
@@ -17,7 +17,7 @@ describe('isImage', () => {
 			success: true,
 			status: 200,
 			error: false,
-			isImage: false
+			isImage: false,
 		});
 	});
 
@@ -28,7 +28,7 @@ describe('isImage', () => {
 			status: 1,
 			error: false,
 			isImage: false,
-			message: 'Invalid URL'
+			message: 'Invalid URL',
 		});
 	});
 
@@ -39,7 +39,7 @@ describe('isImage', () => {
 			status: 404,
 			error: false,
 			isImage: false,
-			message: 'Not Found'
+			message: 'Not Found',
 		});
 	});
 
@@ -50,7 +50,7 @@ describe('isImage', () => {
 			status: 3,
 			error: true,
 			isImage: null,
-			message: expect.stringContaining('Error while fetching the resource')
+			message: expect.stringContaining('Error while fetching the resource'),
 		});
 	});
 });
