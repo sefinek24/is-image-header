@@ -6,7 +6,6 @@ describe('isImage', () => {
 		expect(result).toEqual({
 			success: true,
 			status: 200,
-			error: false,
 			isImage: true,
 		});
 	});
@@ -16,7 +15,6 @@ describe('isImage', () => {
 		expect(result).toEqual({
 			success: true,
 			status: 200,
-			error: false,
 			isImage: false,
 		});
 	});
@@ -25,8 +23,7 @@ describe('isImage', () => {
 		const result = await isImage('not-a-valid-url');
 		expect(result).toEqual({
 			success: false,
-			status: 1,
-			error: false,
+			status: null,
 			isImage: false,
 			message: 'Invalid URL',
 		});
@@ -37,7 +34,6 @@ describe('isImage', () => {
 		expect(result).toEqual({
 			success: false,
 			status: 404,
-			error: false,
 			isImage: false,
 			message: 'Not Found',
 		});
@@ -47,8 +43,7 @@ describe('isImage', () => {
 		const result = await isImage('https://invalid-host/non-existing-image.jpg');
 		expect(result).toEqual({
 			success: false,
-			status: 3,
-			error: true,
+			status: null,
 			isImage: null,
 			message: expect.stringContaining('Error while fetching the resource'),
 		});

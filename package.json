@@ -1,6 +1,6 @@
 {
   "name": "is-image-header",
-  "version": "3.0.8",
+  "version": "3.1.0",
   "description": "This simple module checks if the given link leads to an image.",
   "keywords": [
     "check",

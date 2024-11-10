@@ -12,7 +12,7 @@ const headers = {
 };
 
 module.exports = async url => {
-	if (!isUrl(url)) return { success: false, status: 1, message: 'Invalid URL', error: false, isImage: false };
+	if (!isUrl(url)) return { success: false, status: null, isImage: false, message: 'Invalid URL' };
 
 	try {
 		const res = await axios.head(url, {
@@ -22,24 +22,22 @@ module.exports = async url => {
 		});
 
 		if (res.status === 404) {
-			return { success: false, status: res.status, error: false, message: res.statusText, isImage: false };
+			return { success: false, status: res.status, isImage: false, message: res.statusText };
 		}
 
 		if (res.status !== 200) {
-			return { success: false, status: res.status, error: true, message: res.statusText, isImage: null };
+			return { success: false, status: res.status, isImage: false, message: res.statusText };
 		}
 
-		const contentType = res.headers['content-type'];
-		if (contentType?.startsWith('image/')) {
-			return { success: true, status: res.status, error: false, isImage: true };
+		if (res.headers['content-type']?.startsWith('image/')) {
+			return { success: true, status: res.status, isImage: true };
 		} else {
-			return { success: true, status: res.status, error: false, isImage: false };
+			return { success: true, status: res.status, isImage: false };
 		}
 	} catch (err) {
 		return {
 			success: false,
-			status: 3,
-			error: true,
+			status: null,
 			isImage: null,
 			message: `Error while fetching the resource: ${err.message}`,
 		};

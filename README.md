@@ -13,10 +13,10 @@ const isImage = require('is-image-header');
 
 (async () => {
     const example1 = await isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg');
-    console.log(example1); // { success: true, status: 200, error: false, isImage: true }
+    console.log(example1); // { success: true, status: 200, isImage: true }
 
     const example2 = await isImage('https://sefinek.net');
-    console.log(example2); // { success: true, status: 200, error: false, isImage: false }
+    console.log(example2); // { success: true, status: 200, isImage: false }
 })();
 ```
 
@@ -24,8 +24,8 @@ const isImage = require('is-image-header');
 ```js
 const isImage = require('is-image-header');
 
-isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg').then(console.log); // { success: true, status: 200, error: false, isImage: true }
-isImage('https://sefinek.net').then(console.log); // { success: true, status: 200, error: false, isImage: false }
+isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg').then(console.log); // { success: true, status: 200, isImage: true }
+isImage('https://sefinek.net').then(console.log); // { success: true, status: 200, isImage: false }
 ```
 
 ## 🤝 » Support
