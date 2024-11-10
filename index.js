@@ -3,7 +3,7 @@ const isUrl = require('./is-url.js');
 const { name, version, devDependencies } = require('./package.json');
 
 const defaultHeaders = {
-	'User-Agent': `${name}/${version} (+https://github.com/sefinek24/is-image-header)${process.env.JEST_WORKER_ID ? ` jest/${devDependencies.jest.replace(/^[^0-9]*/, '')}` : ''}`,
+	'User-Agent': `${name}/${version} (+https://github.com/sefinek/is-image-header)${process.env.JEST_WORKER_ID ? ` jest/${devDependencies.jest.replace(/^[^0-9]*/, '')}` : ''}`,
 	'Connection': 'keep-alive',
 	'DNT': '1'
 };

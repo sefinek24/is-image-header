@@ -29,10 +29,10 @@ isImage('https://sefinek.net').then(console.log); // { success: true, status: 20
 ```
 
 ## 🤝 » Help
-Open new [Issue](https://github.com/sefinek24/is-image-header/issues/new/choose) on GitHub.
+Open new [Issue](https://github.com/sefinek/is-image-header/issues/new/choose) on GitHub.
 
 ## ⭐ » Star
-If you like this module, please star [the repository](https://github.com/sefinek24/random-cat-img).
+If you like this module, please star [the repository](https://github.com/sefinek/random-cat-img).
 
 ## 📜 » License MIT
 <div align="center">

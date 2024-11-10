@@ -18,13 +18,13 @@
     "png",
     "url-is-image"
   ],
-  "homepage": "https://github.com/sefinek24/is-image-header#readme",
+  "homepage": "https://github.com/sefinek/is-image-header#readme",
   "bugs": {
-    "url": "https://github.com/sefinek24/is-image-header/issues"
+    "url": "https://github.com/sefinek/is-image-header/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sefinek24/is-image-header.git"
+    "url": "git+https://github.com/sefinek/is-image-header.git"
   },
   "license": "MIT",
   "author": "Sefinek <contact@sefinek.net> (https://sefinek.net)",
