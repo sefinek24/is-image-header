@@ -1,6 +1,6 @@
 {
   "name": "is-image-header",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "This module checks if the URL leads to a photo by analyzing the header.",
   "keywords": [
     "check",
@@ -8,15 +8,15 @@
     "header",
     "image",
     "img",
-    "is-image",
-    "is-image-url",
-    "is-img",
+    "is image url",
+    "is image",
+    "is img",
     "jpeg",
     "jpg",
     "pic",
     "picture",
     "png",
-    "url-is-image"
+    "url is image"
   ],
   "homepage": "https://github.com/sefinek/is-image-header#readme",
   "bugs": {

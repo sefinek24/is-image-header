@@ -1,5 +1,5 @@
-# 🌍 » What is that?
-This module checks if the URL leads to a photo by analyzing the header.
+# 🌍 » What does it do?
+This simple module checks if the given link leads to an image.
 
 ## 🤔 » Installation
 ```bash
@@ -28,11 +28,11 @@ isImage('https://cdn.sefinek.net/images/animals/cat/cat-story-25-1377426-min.jpg
 isImage('https://sefinek.net').then(console.log); // { success: true, status: 200, error: false, isImage: false }
 ```
 
-## 🤝 » Help
-Open new [Issue](https://github.com/sefinek/is-image-header/issues/new/choose) on GitHub.
+## 🤝 » Support
+Join our [Discord server](https://discord.gg/53DBjTuzgZ) or open a new [Issue](https://github.com/sefinek/is-image-header/issues).
 
 ## ⭐ » Star
-If you like this module, please star [the repository](https://github.com/sefinek/random-cat-img).
+If you enjoy this module, please consider starring [the repository](https://github.com/sefinek/random-cat-img).
 
 ## 📜 » License MIT
 <div align="center">
