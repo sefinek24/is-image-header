@@ -6,5 +6,5 @@ declare module 'is-image-header' {
     }
 
     function isImage(url: string): Promise<IsImageResult>;
-    export = isImage;
+    export default isImage;
 }
